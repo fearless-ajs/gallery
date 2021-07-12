@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\admin\AdminAuthController;
 use App\Http\Controllers\admin\AdminDashboardController;
+use App\Http\Controllers\admin\AdminPagesController;
 use App\Http\Controllers\RBAC\RoleController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,11 +22,28 @@ Route::get('/login',            [AdminAuthController::class, 'login'])->name('lo
 
 Route::middleware('auth')->group(function () {
     Route::middleware('role:administrator')->group(function (){
-        Route::get('/register', [AdminAuthController::class, 'register'])->name('admin.register');
-        Route::get('/dashboard',[AdminDashboardController::class, 'dashboard'])->name('admin.dashboard');
-        Route::get('/settings', [AdminDashboardController::class, 'settings'])->name('admin.settings');
-        Route::get('/role',     [RoleController::class, 'store'])->name('role.create');
+
+        /**
+         * | System Authentication and dashboard route
+         */
+        Route::get('/register',                [AdminAuthController::class, 'register'])->name('admin.register');
+        Route::get('/dashboard',               [AdminDashboardController::class, 'dashboard'])->name('admin.dashboard');
+        Route::get('/settings',                [AdminDashboardController::class, 'settings'])->name('admin.settings');
+        Route::get('/role',                    [RoleController::class, 'store'])->name('role.create');
+
+       /**
+        * | System pages generator routes
+        * | Routes for creating page contents
+        */
+        Route::get('/generate/home',           [AdminPagesController::class, 'homePage'])->name('homepage.generate');
+        Route::get('/generate/about',          [AdminPagesController::class, 'aboutPage'])->name('about.generate');
+        Route::get('/generate/open-house',     [AdminPagesController::class, 'openHousePage'])->name('open-house.generate');
+        Route::get('/open-house',              [AdminPagesController::class, 'openHouseDatePage'])->name('admin.open-house-dates');
+        Route::get('/new-article',             [AdminPagesController::class, 'newArticlePage'])->name('admin.new-article');
+        Route::get('/all-article',             [AdminPagesController::class, 'articleListPage'])->name('admin.all-articles');
+        Route::get('/edit-article/{id}',       [AdminPagesController::class, 'editArticlePage'])->name('admin.edit-article');
+
     });
 
-    Route::get('/logout',   [AdminAuthController::class, 'logout'])->name('logout');
+    Route::get('/logout',                       [AdminAuthController::class, 'logout'])->name('logout');
 });

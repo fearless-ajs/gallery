@@ -1,9 +1,9 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="{{route('admin.dashboard')}}" class="brand-link">
         <img src="{{asset('admin/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">AdminLTE 3</span>
+        <span class="brand-text font-weight-light">{{\Illuminate\Support\Facades\Session::get('settings')->app_name}}</span>
     </a>
 
     <!-- Sidebar -->
@@ -38,9 +38,9 @@
                 <li class="nav-item menu-open">
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="./index2.html" class="nav-link active">
+                            <a href="{{route('admin.dashboard')}}" class="nav-link active">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Dashboard v2</p>
+                                <p>Dashboard</p>
                             </a>
                         </li>
                     </ul>
@@ -212,33 +212,21 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-edit"></i>
                         <p>
-                            Forms
+                            Articles
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="pages/forms/general.html" class="nav-link">
+                            <a href="{{route('admin.new-article')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>General Elements</p>
+                                <p>New</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/forms/advanced.html" class="nav-link">
+                            <a href="{{route('admin.all-articles')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Advanced Elements</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/forms/editors.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Editors</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/forms/validation.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Validation</p>
+                                <p>All articles</p>
                             </a>
                         </li>
                     </ul>
@@ -247,84 +235,42 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-table"></i>
                         <p>
-                            Tables
+                            Component
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="pages/tables/simple.html" class="nav-link">
+                            <a href="{{route('admin.open-house-dates')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Simple Tables</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/tables/data.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>DataTables</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/tables/jsgrid.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>jsGrid</p>
+                                <p>Open house dates</p>
                             </a>
                         </li>
                     </ul>
                 </li>
-                <li class="nav-header">EXAMPLES</li>
-                <li class="nav-item">
-                    <a href="pages/calendar.html" class="nav-link">
-                        <i class="nav-icon fas fa-calendar-alt"></i>
-                        <p>
-                            Calendar
-                            <span class="badge badge-info right">2</span>
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="pages/gallery.html" class="nav-link">
-                        <i class="nav-icon far fa-image"></i>
-                        <p>
-                            Gallery
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="pages/kanban.html" class="nav-link">
-                        <i class="nav-icon fas fa-columns"></i>
-                        <p>
-                            Kanban Board
-                        </p>
-                    </a>
-                </li>
+                <li class="nav-header">SYSTEM MENU</li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon far fa-envelope"></i>
+                        <i class="nav-icon fas fa-edit"></i>
                         <p>
-                            Mailbox
+                            Application
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="pages/mailbox/mailbox.html" class="nav-link">
+                            <a href="{{route('admin.settings')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Inbox</p>
+                                <p>Settings</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/mailbox/compose.html" class="nav-link">
+                            <a href="{{route('admin.register')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Compose</p>
+                                <p>Register</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="pages/mailbox/read-mail.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Read</p>
-                            </a>
-                        </li>
+
                     </ul>
                 </li>
                 <li class="nav-item">
@@ -337,21 +283,21 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="pages/examples/invoice.html" class="nav-link">
+                            <a href="{{route('homepage.generate')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Invoice</p>
+                                <p>Homepage</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/examples/profile.html" class="nav-link">
+                            <a href="{{route('about.generate')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Profile</p>
+                                <p>About</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/examples/e-commerce.html" class="nav-link">
+                            <a href="{{route('open-house.generate')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>E-commerce</p>
+                                <p>Open House</p>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -398,171 +344,9 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon far fa-plus-square"></i>
-                        <p>
-                            Extras
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>
-                                    Login & Register v1
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="pages/examples/login.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Login v1</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/examples/register.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Register v1</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/examples/forgot-password.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Forgot Password v1</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/examples/recover-password.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Recover Password v1</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>
-                                    Login & Register v2
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="pages/examples/login-v2.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Login v2</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/examples/register-v2.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Register v2</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/examples/forgot-password-v2.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Forgot Password v2</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/examples/recover-password-v2.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Recover Password v2</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/examples/lockscreen.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Lockscreen</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/examples/legacy-user-menu.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Legacy User Menu</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/examples/language-menu.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Language Menu</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/examples/404.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Error 404</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/examples/500.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Error 500</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/examples/pace.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Pace</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/examples/blank.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Blank Page</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="starter.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Starter Page</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-search"></i>
-                        <p>
-                            Search
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="pages/search/simple.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Simple Search</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/search/enhanced.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Enhanced</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-header">MISCELLANEOUS</li>
-                <li class="nav-item">
-                    <a href="iframe.html" class="nav-link">
-                        <i class="nav-icon fas fa-ellipsis-h"></i>
-                        <p>Tabbed IFrame Plugin</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="https://adminlte.io/docs/3.1/" class="nav-link">
-                        <i class="nav-icon fas fa-file"></i>
-                        <p>Documentation</p>
-                    </a>
-                </li>
+
+                <li class="nav-header">ADMIN DASHBOARD</li>
+
 
             </ul>
         </nav>

@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Setting;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class AdminSettingsPage extends Component
@@ -13,6 +14,10 @@ class AdminSettingsPage extends Component
     public $facebook;
     public $instagram;
 
+    public function mount()
+    {
+      $this->refresh();
+    }
     public function updated($field)
     {
         $this->validateOnly($field, [
@@ -46,6 +51,7 @@ class AdminSettingsPage extends Component
         }
 
         Setting::create([
+            'user_id'   => Auth::user()->id,
             'domain'    => $this->domain,
             'app_name'  => $this->app_name,
             'email'     => $this->email,
