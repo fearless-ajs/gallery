@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\admin\AdminAuthController;
 use App\Http\Controllers\admin\AdminDashboardController;
+use App\Http\Controllers\admin\AdminGalleryController;
 use App\Http\Controllers\admin\AdminPagesController;
 use App\Http\Controllers\RBAC\RoleController;
 use Illuminate\Support\Facades\Route;
@@ -43,6 +44,13 @@ Route::middleware('auth')->group(function () {
         Route::get('/all-article',             [AdminPagesController::class, 'articleListPage'])->name('admin.all-articles');
         Route::get('/edit-article/{id}',       [AdminPagesController::class, 'editArticlePage'])->name('admin.edit-article');
 
+        /**
+         * | System gallery generator routes
+         * | Routes for creating gallery page contents
+         */
+        Route::get('/videos/new',             [AdminGalleryController::class, 'newVideoPage'])->name('videos.new');
+        Route::get('/all-videos',             [AdminGalleryController::class, 'allVideosPage'])->name('videos.all');
+        Route::get('/edit-videos/{id}',       [AdminGalleryController::class, 'editVideoPage'])->name('video.edit');
     });
 
     Route::get('/logout',                       [AdminAuthController::class, 'logout'])->name('logout');

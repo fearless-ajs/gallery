@@ -14,7 +14,7 @@
                 <img src="{{asset('admin/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Alexander Pierce</a>
+                <a href="#" class="d-block">{{\Illuminate\Support\Facades\Auth::user()->name}}</a>
             </div>
         </div>
 
@@ -151,63 +151,28 @@
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-tree"></i>
+                        <i class="nav-icon fas fa-play"></i>
                         <p>
-                            UI Elements
+                            Videos
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="pages/UI/general.html" class="nav-link">
+                            <a href="{{route('videos.new')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>General</p>
+                                <p>New</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/UI/icons.html" class="nav-link">
+                            <a href="{{route('videos.all')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Icons</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/UI/buttons.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Buttons</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/UI/sliders.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Sliders</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/UI/modals.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Modals & Alerts</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/UI/navbar.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Navbar & Tabs</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/UI/timeline.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Timeline</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/UI/ribbons.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Ribbons</p>
+                                <p>All videos</p>
                             </a>
                         </li>
                     </ul>
                 </li>
+
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-edit"></i>
@@ -298,48 +263,6 @@
                             <a href="{{route('open-house.generate')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Open House</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/examples/projects.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Projects</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/examples/project-add.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Project Add</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/examples/project-edit.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Project Edit</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/examples/project-detail.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Project Detail</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/examples/contacts.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Contacts</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/examples/faq.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>FAQ</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/examples/contact-us.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Contact us</p>
                             </a>
                         </li>
                     </ul>
