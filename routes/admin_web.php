@@ -4,6 +4,7 @@ use App\Http\Controllers\admin\AdminAuthController;
 use App\Http\Controllers\admin\AdminDashboardController;
 use App\Http\Controllers\admin\AdminGalleryController;
 use App\Http\Controllers\admin\AdminPagesController;
+use App\Http\Controllers\admin\AdminSubscribersController;
 use App\Http\Controllers\RBAC\RoleController;
 use Illuminate\Support\Facades\Route;
 
@@ -68,6 +69,11 @@ Route::middleware('auth')->group(function () {
         Route::get('/edit-sub-sub-albums/{id}',                     [AdminGalleryController::class, 'editSubSubAlbumPage'])->name('sub-sub-album.edit');
         Route::get('/sub-sub-album-pictures/{sub_sub_album_id}',    [AdminGalleryController::class, 'subSubAlbumPicturesPage'])->name('sub-sub-album.pictures');
 
+
+        /**
+         * | Open house subscribers route
+         */
+        Route::get('/subscribers',                                   [AdminSubscribersController::class, 'subscribers'])->name('subscribers');
 
     });
 
