@@ -37,13 +37,13 @@ Route::middleware('auth')->group(function () {
         * | System pages generator routes
         * | Routes for creating page contents
         */
-        Route::get('/generate/home',           [AdminPagesController::class, 'homePage'])->name('homepage.generate');
-        Route::get('/generate/about',          [AdminPagesController::class, 'aboutPage'])->name('about.generate');
-        Route::get('/generate/open-house',     [AdminPagesController::class, 'openHousePage'])->name('open-house.generate');
-        Route::get('/open-house',              [AdminPagesController::class, 'openHouseDatePage'])->name('admin.open-house-dates');
-        Route::get('/new-article',             [AdminPagesController::class, 'newArticlePage'])->name('admin.new-article');
-        Route::get('/all-article',             [AdminPagesController::class, 'articleListPage'])->name('admin.all-articles');
-        Route::get('/edit-article/{id}',       [AdminPagesController::class, 'editArticlePage'])->name('admin.edit-article');
+        Route::get('/generate/home',                                [AdminPagesController::class, 'homePage'])->name('homepage.generate');
+        Route::get('/generate/about',                               [AdminPagesController::class, 'aboutPage'])->name('about.generate');
+        Route::get('/generate/open-house',                          [AdminPagesController::class, 'openHousePage'])->name('open-house.generate');
+        Route::get('/open-house',                                   [AdminPagesController::class, 'openHouseDatePage'])->name('admin.open-house-dates');
+        Route::get('/new-article',                                  [AdminPagesController::class, 'newArticlePage'])->name('admin.new-article');
+        Route::get('/all-article',                                  [AdminPagesController::class, 'articleListPage'])->name('admin.all-articles');
+        Route::get('/edit-article/{id}',                            [AdminPagesController::class, 'editArticlePage'])->name('admin.edit-article');
 
         /**
          * | System gallery generator routes
