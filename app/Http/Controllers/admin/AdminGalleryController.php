@@ -31,4 +31,56 @@ class AdminGalleryController extends Controller
     {
         return view('admin.edit_video_page', ['settings' => $this->settings, 'id' => $id]);
     }
+
+    public function newAlbumPage()
+    {
+        return view('admin.new_album_page', ['settings' => $this->settings]);
+    }
+
+    public function allAlbumsPage()
+    {
+        return view('admin.albums_list_page', ['settings' => $this->settings]);
+    }
+
+    public function editAlbumPage($id)
+    {
+        return view('admin.edit_album_page', ['settings' => $this->settings, 'id' => $id]);
+    }
+
+
+    public function albumPicturesPage($album_id)
+    {
+        return view('admin.album_pictures_page', ['settings' => $this->settings, 'album_id' => $album_id]);
+    }
+
+    public function subAlbumPicturesPage($sub_album_id)
+    {
+        return view('admin.sub_album_pictures_page', ['settings' => $this->settings, 'sub_album_id' => $sub_album_id]);
+    }
+
+    public function subSubAlbumPicturesPage($sub_sub_album_id)
+    {
+        return view('admin.sub_sub_album_pictures_page', ['settings' => $this->settings, 'sub_sub_album_id' => $sub_sub_album_id]);
+    }
+
+    public function allSubAlbumsPage($album_id)
+    {
+        return view('admin.sub_albums_list_page', ['settings' => $this->settings, 'album_id' => $album_id]);
+    }
+
+    public function editSubAlbumPage($id)
+    {
+        return view('admin.edit_sub_album_page', ['settings' => $this->settings, 'id' => $id]);
+    }
+
+    public function allSubSubAlbumsPage($sub_album_id)
+    {
+        return view('admin.sub_sub_albums_list_page', ['settings' => $this->settings, 'sub_album_id' => $sub_album_id]);
+    }
+
+    public function editSubSubAlbumPage($id)
+    {
+        return view('admin.edit_sub_sub_album_page', ['settings' => $this->settings, 'id' => $id]);
+    }
+
 }

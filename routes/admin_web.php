@@ -51,6 +51,24 @@ Route::middleware('auth')->group(function () {
         Route::get('/videos/new',             [AdminGalleryController::class, 'newVideoPage'])->name('videos.new');
         Route::get('/all-videos',             [AdminGalleryController::class, 'allVideosPage'])->name('videos.all');
         Route::get('/edit-videos/{id}',       [AdminGalleryController::class, 'editVideoPage'])->name('video.edit');
+
+
+        Route::get('/albums/new',                           [AdminGalleryController::class, 'newAlbumPage'])->name('albums.new');
+        Route::get('/all-albums',                           [AdminGalleryController::class, 'allAlbumsPage'])->name('albums.all');
+        Route::get('/edit-albums/{id}',                     [AdminGalleryController::class, 'editAlbumPage'])->name('album.edit');
+        Route::get('/album-pictures/{album_id}',            [AdminGalleryController::class, 'albumPicturesPage'])->name('album.pictures');
+
+
+        Route::get('/all-sub-albums/{album_id}',            [AdminGalleryController::class, 'allSubAlbumsPage'])->name('sub-albums.all');
+        Route::get('/edit-sub-albums/{id}',                 [AdminGalleryController::class, 'editSubAlbumPage'])->name('sub-album.edit');
+        Route::get('/sub-album-pictures/{sub_album_id}',    [AdminGalleryController::class, 'subAlbumPicturesPage'])->name('sub-album.pictures');
+
+
+        Route::get('/all-sub-sub-albums/{sub_album_id}',    [AdminGalleryController::class, 'allSubSubAlbumsPage'])->name('sub-sub-albums.all');
+        Route::get('/edit-sub-sub-albums/{id}',             [AdminGalleryController::class, 'editSubSubAlbumPage'])->name('sub-sub-album.edit');
+        Route::get('/sub-sub-album-pictures/{sub_sub_album_id}',    [AdminGalleryController::class, 'subSubAlbumPicturesPage'])->name('sub-sub-album.pictures');
+
+
     });
 
     Route::get('/logout',                       [AdminAuthController::class, 'logout'])->name('logout');

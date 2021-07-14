@@ -4,12 +4,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>All Videos</h1>
+                    <h1>{{$album->title}}</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Home</a></li>
-                        <li class="breadcrumb-item active">Videos</li>
+                        <li class="breadcrumb-item active">Albums</li>
                     </ol>
                 </div>
             </div>
@@ -24,7 +24,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Published Videos</h3>
+                            <h3 class="card-title">Albums inside {{$album->title}}</h3>
                         </div>
                         <!-- ./card-header -->
                         <div class="card-body">
@@ -32,30 +32,28 @@
                                 <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Name</th>
-                                    <th>Date</th>
-                                    <th>Updated</th>
-                                    <th>Video embed code</th>
+                                    <th>Title</th>
+                                    <th>Content</th>
+                                    <th>Date Created</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @if($videos)
-                                    @foreach($videos as $video)
+                                @if($albums)
+                                    @foreach($albums as $album)
                                         <tr data-widget="expandable-table" aria-expanded="false">
                                             <td>Expand</td>
-                                            <td>{{$video->name}}</td>
-                                            <td>{{$video->created_at->format('d M Y')}}</td>
-                                            <td>{{$video->updated_at->format('d M Y')}}</td>
-                                            <td>{{$video->link}}</td>
+                                            <td>{{$album->title}}</td>
+                                            <td>{{$album->content}}</td>
+                                            <td>{{$album->created_at->format('d M Y')}}</td>
                                         </tr>
                                         <tr class="expandable-body">
                                             <td colspan="5">
                                                 <p>
-                                                    {{$video->details}}
-                                                    <a href="{{route('video.edit', $video->id)}}">View/Edit</a>
+                                                    {{$album->details}}
+                                                    <a target="_blank" href="{{route('sub-album.edit', $album->id)}}">View/Edit</a>
                                                     <br><br>
-                                                    <button wire:click="delete({{$video->id}})" wire:loading.remove wire:target="delete({{$video->id}})" type="button" class="btn btn-danger">Delete video</button>
-                                                    <button disabled wire:loading wire:target="delete({{$video->id}})" type="button" class="btn btn-danger"> Processing  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> </button>
+                                                    <button wire:click="delete({{$album->id}})" wire:loading.remove wire:target="delete({{$album->id}})" type="button" class="btn btn-danger">Delete album</button>
+                                                    <button disabled wire:loading wire:target="delete({{$album->id}})" type="button" class="btn btn-danger"> Processing  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> </button>
                                                 </p>
                                             </td>
                                         </tr>
@@ -64,7 +62,7 @@
 
                                 </tbody>
                             </table>
-                            {{ $videos->links('components.pagination-links') /* For pagination links */}}
+                            {{ $albums->links('components.pagination-links') /* For pagination links */}}
                         </div>
                         <!-- /.card-body -->
                     </div>

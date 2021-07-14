@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="{{asset('admin/plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{asset('admin/dist/css/adminlte.min.css')}}">
+    <!-- Ekko Lightbox -->
+    <link rel="stylesheet" href="{{asset('admin/plugins/ekko-lightbox/ekko-lightbox.css')}}">
 
     <link rel="stylesheet" href="{{asset('admin/dist/css/toastr.css')}}">
     <!--Laravel livewire styles  -->
@@ -105,7 +107,36 @@
 <script src="{{asset('admin/dist/js/demo.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{asset('admin/dist/js/pages/dashboard2.js')}}"></script>
+
 <script  src="{{asset('admin/dist/js/toastr.js')}}"></script>
+
+
+
+
+<!-- Ekko Lightbox -->
+<script src="{{asset('admin/plugins/ekko-lightbox/ekko-lightbox.min.js')}}"></script>
+<!-- AdminLTE App -->
+<!-- Filterizr-->
+<script src="{{asset('admin/plugins/filterizr/jquery.filterizr.min.js')}}"></script>
+
+<!-- Page specific script -->
+<script>
+    $(function () {
+        $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+            event.preventDefault();
+            $(this).ekkoLightbox({
+                alwaysShowClose: true
+            });
+        });
+
+        $('.filter-container').filterizr({gutterPixels: 3});
+        $('.btn[data-filter]').on('click', function() {
+            $('.btn[data-filter]').removeClass('active');
+            $(this).addClass('active');
+        });
+    })
+</script>
+
 <script>
     window.livewire.on('alert', param => {
         toastr[param['type']](param['message'], param['type']);
