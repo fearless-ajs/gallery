@@ -49,7 +49,7 @@ class UserAboutPageGeneratorPage extends Component
                     $this->deleteOldFile($page->image);
                     $image = $this->storeFile();
                 }else{
-                    $image = '';
+                    $image = $this->storeFile();
                 }
 
             }else{

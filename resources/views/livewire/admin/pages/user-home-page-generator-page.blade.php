@@ -59,8 +59,28 @@
                                 <!-- /.form-group -->
                             </div>
                             <!-- /.col -->
+
+
                         </div>
                         <!-- /.row -->
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Background Image<sup>(Landscape)</sup></label>
+                                <input type="file" wire:model.lazy="image" class="form-control {{$errors->has('image')? 'is-invalid' : '' }}">
+                                @if($image)
+                                    <img src="{{$image->temporaryUrl()}}" class="img-fluid" />
+                                @else
+                                    @if($homepage->image)
+                                        <img src="{{$old_image}}" class="img-fluid" />
+                                        <small wire:click="removeImage" style="cursor:pointer;" class="form-text text-muted"><i wire:loading wire:target="removeImage" class="fa fa-spin"><i class="fa fa-spinner"></i></i> >> Remove image</small>
+                                    @endif
+                                @endif
+                                @error('image') <span style="color: crimson; font-size: 10px;">{{ $message }}</span> @enderror
+                                <small wire:loading wire:target="image" class="form-text text-muted"><i class="fa fa-spin"><i class="fa fa-spinner"></i></i>&nbsp;&nbsp; Loading preview...</small>
+                            </div>
+                            <!-- /.form-group -->
+                        </div>
 
                         <div class="row">
                             <div class="col-12 col-sm-12">
