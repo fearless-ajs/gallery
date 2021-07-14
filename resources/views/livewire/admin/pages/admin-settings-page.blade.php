@@ -84,7 +84,7 @@
                         </div>
                         <!-- /.row -->
 
-                        <button wire:loading.remove wire:target="save" type="submit" class="btn btn-primary">Submit</button>
+                        <button wire:loading.remove wire:target="save" type="submit" class="btn btn-primary">Save settings</button>
                         <button disabled wire:loading wire:target="save" type="submit" class="btn btn-primary"> Processing  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> </button>
                     </form>
                 </div>

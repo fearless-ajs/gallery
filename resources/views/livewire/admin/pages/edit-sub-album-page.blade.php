@@ -10,7 +10,10 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Home</a></li>
-                        <li class="breadcrumb-item active">Albums</li>
+                        <li class="breadcrumb-item"><a href="{{route('albums.all')}}">Albums</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('album.edit', $album->album->id)}}">{{$album->album->title}}</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('sub-albums.all', $album->album->id)}}">Albums</a></li>
+                        <li class="breadcrumb-item active">{{$title}}</li>
                     </ol>
                 </div>
             </div>

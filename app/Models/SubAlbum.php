@@ -16,4 +16,9 @@ class SubAlbum extends Model
         return Storage::disk('public')->url($this->image);
 
     }
+
+    public function album()
+    {
+        return $this->belongsTo(Album::class);
+    }
 }

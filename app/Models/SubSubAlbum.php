@@ -16,4 +16,11 @@ class SubSubAlbum extends Model
         return Storage::disk('public')->url($this->image);
 
     }
+
+    public function album()
+    {
+        return $this->belongsTo(SubAlbum::class, 'sub_album_id');
+    }
+
+
 }

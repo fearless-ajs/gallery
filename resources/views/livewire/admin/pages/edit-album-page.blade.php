@@ -10,7 +10,8 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Home</a></li>
-                        <li class="breadcrumb-item active">Albums</li>
+                        <li class="breadcrumb-item"><a href="{{route('albums.all')}}">Albums</a></li>
+                        <li class="breadcrumb-item active">{{$title}}</li>
                     </ol>
                 </div>
             </div>
