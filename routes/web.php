@@ -14,4 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [UserPagesController::class, 'homepage'])->name('user.homepage');
+Route::get('/',               [UserPagesController::class, 'homepage'])->name('user.homepage');
+Route::get('/about',          [UserPagesController::class, 'aboutPage'])->name('user.about');
+Route::get('/articles',       [UserPagesController::class, 'articlesPage'])->name('user.articles');
+Route::get('/articles/{id}',  [UserPagesController::class, 'articleViewPage'])->name('user.view.article');
+Route::get('/our-open-house', [UserPagesController::class, 'openHousePage'])->name('user.open-houses');

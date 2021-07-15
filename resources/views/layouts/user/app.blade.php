@@ -14,7 +14,16 @@
     <link type="text/css" rel="stylesheet" href="{{asset('user/css/style.css')}}">
     <link type="text/css" rel="stylesheet" href="{{asset('user/css/style-dark.css')}}">
     <!--=============== favicons ===============-->
-    <link rel="shortcut icon" href="{{asset('user/images/favicon.ico')}}">
+    <link rel="shortcut icon" href="
+     @if($settings->favicon)
+        {{$settings->FaviconPath}}
+    @else
+    {{asset('user/images/favicon.ico')}}
+    @endif
+        ">
+    <link rel="stylesheet" href="{{asset('admin/dist/css/toastr.css')}}">
+    <!--Laravel livewire styles  -->
+    <livewire:styles />
 </head>
 
 <body>
@@ -31,7 +40,13 @@
     <!-- header start  -->
     <header class="main-header">
         <!-- logo   -->
-        <a href="{{route('user.homepage')}}" class="logo-holder"><img src="{{asset('user/images/logo.png')}}" alt=""></a>
+        <a href="{{route('user.homepage')}}" class="logo-holder"><img src="
+            @if($settings->logo)
+                {{$settings->IconPath}}
+            @else
+            {{asset('user/images/logo.png')}}
+            @endif
+                " alt=""></a>
         <!-- logo end  -->
 
         <!-- mobile nav -->
@@ -44,10 +59,10 @@
             <nav>
                 <ul>
                     <li>
-                        <a href="index.html" class="act-link">Home </a>
+                        <a href="{{route('user.homepage')}}" class="@if(Route::currentRouteName() == 'user.homepage') act-link @endif ">Home </a>
                     </li>
                     <li>
-                        <a href="about.html">About</a>
+                        <a href="{{route('user.about')}}" class="@if(Route::currentRouteName() == 'user.about') act-link @endif ">About</a>
                     </li>
                     <li>
                         <a href="#">Galleries </a>
@@ -60,13 +75,10 @@
                     </li>
 
                     <li>
-                        <a href="articles.html">Articles</a>
+                        <a href="{{route('user.articles')}}" class="@if(Route::currentRouteName() == 'user.articles' || Route::currentRouteName() == 'user.view.article') act-link @endif ">Articles</a>
                     </li>
                     <li>
-                        <a href="open-houses.html">Open Houses</a>
-                    </li>
-                    <li>
-                        <a href="index.html">Contact</a>
+                        <a href="{{route('user.open-houses')}}" class="@if(Route::currentRouteName() == 'user.open-houses') act-link @endif ">Open Houses</a>
                     </li>
                 </ul>
             </nav>
@@ -94,8 +106,17 @@
 </div>
 <!-- Main end -->
 <!--=============== scripts  ===============-->
+<!--Livewire script-->
+<livewire:scripts />
 <script type="text/javascript" src="{{asset('user/js/jquery.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('user/js/plugins.js')}}"></script>
 <script type="text/javascript" src="{{asset('user/js/scripts.js')}}"></script>
+<script  src="{{asset('admin/dist/js/toastr.js')}}"></script>
+
+<script>
+    window.livewire.on('alert', param => {
+        toastr[param['type']](param['message'], param['type']);
+    });
+</script>
 </body>
 </html>

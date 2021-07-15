@@ -84,6 +84,42 @@
                         </div>
                         <!-- /.row -->
 
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Favicon <sup>(Max 200kb)</sup></label>
+                                <input type="file" wire:model.lazy="favicon" class="form-control {{$errors->has('favicon')? 'is-invalid' : '' }}">
+                                @if($favicon)
+                                    <img src="{{$favicon->temporaryUrl()}}" class="img-fluid" />
+                                @else
+                                    @if($setting->favicon)
+                                        <img src="{{$old_favicon}}" class="img-fluid" />
+                                    @endif
+                                @endif
+                                @error('favicon') <span style="color: crimson; font-size: 10px;">{{ $message }}</span> @enderror
+                                <small wire:loading wire:target="favicon" class="form-text text-muted"><i class="fa fa-spin"><i class="fa fa-spinner"></i></i>&nbsp;&nbsp; Loading preview...</small>
+                            </div>
+                            <!-- /.form-group -->
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Icon <sup>(Max 200kb)</sup></label>
+                                <input type="file" wire:model.lazy="icon" class="form-control {{$errors->has('icon')? 'is-invalid' : '' }}">
+                                @if($icon)
+                                    <img src="{{$icon->temporaryUrl()}}" class="img-fluid" />
+                                @else
+                                    @if($setting->logo)
+                                        <img src="{{$old_icon}}" class="img-fluid" />
+                                    @endif
+                                @endif
+                                @error('icon') <span style="color: crimson; font-size: 10px;">{{ $message }}</span> @enderror
+                                <small wire:loading wire:target="icon" class="form-text text-muted"><i class="fa fa-spin"><i class="fa fa-spinner"></i></i>&nbsp;&nbsp; Loading preview...</small>
+                            </div>
+                            <!-- /.form-group -->
+                        </div>
+
+
+
                         <button wire:loading.remove wire:target="save" type="submit" class="btn btn-primary">Save settings</button>
                         <button disabled wire:loading wire:target="save" type="submit" class="btn btn-primary"> Processing  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> </button>
                     </form>
