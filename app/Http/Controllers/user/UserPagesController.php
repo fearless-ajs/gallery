@@ -68,4 +68,15 @@ class UserPagesController extends Controller
         ];
         return view('user.open_house', ['settings' => $this->settings, 'data' => $data]);
     }
+
+
+    public function videosPage()
+    {
+        $data = [
+            'title'       => 'Videos - '.  $this->settings->app_name,
+            'keywords'    => 'Videos - '.  $this->settings->app_name,
+            'description' => 'Videos - '.  $this->settings->app_name,
+        ];
+        return view('user.videos', ['settings' => $this->settings, 'data' => $data]);
+    }
 }

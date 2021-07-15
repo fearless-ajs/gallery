@@ -19,3 +19,7 @@ Route::get('/about',          [UserPagesController::class, 'aboutPage'])->name('
 Route::get('/articles',       [UserPagesController::class, 'articlesPage'])->name('user.articles');
 Route::get('/articles/{id}',  [UserPagesController::class, 'articleViewPage'])->name('user.view.article');
 Route::get('/our-open-house', [UserPagesController::class, 'openHousePage'])->name('user.open-houses');
+
+
+
+Route::get('/videos',       [UserPagesController::class, 'videosPage'])->name('user.videos');

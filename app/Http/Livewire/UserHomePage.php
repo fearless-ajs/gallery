@@ -3,20 +3,28 @@
 namespace App\Http\Livewire;
 
 use App\Models\HomePage;
+use App\Models\Setting;
 use Livewire\Component;
 
 class UserHomePage extends Component
 {
     public $page;
+    public $setting;
 
     public function mount()
     {
         $this->fetchPageData();
+        $this->fetchSettings();
     }
 
     public function fetchPageData()
     {
        $this->page =  HomePage::latest()->first();
+    }
+
+    public function fetchSettings()
+    {
+        $this->setting = Setting::latest()->first();
     }
 
     public function render()

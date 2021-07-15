@@ -65,11 +65,11 @@
                         <a href="{{route('user.about')}}" class="@if(Route::currentRouteName() == 'user.about') act-link @endif ">About</a>
                     </li>
                     <li>
-                        <a href="#">Galleries </a>
+                        <a href="#" class="@if(Route::currentRouteName() == 'user.videos' || Route::currentRouteName() == 'user.pictures') act-link @endif ">Galleries </a>
                         <!--second level -->
                         <ul>
                             <li><a href="pictures.html">Pictures</a></li>
-                            <li><a href="videos.html">Videos</a></li>
+                            <li><a href="{{route('user.videos')}}">Videos</a></li>
                         </ul>
                         <!--second level end-->
                     </li>
