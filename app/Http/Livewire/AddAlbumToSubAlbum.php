@@ -59,7 +59,7 @@ class AddAlbumToSubAlbum extends Component
 
     public function storeFile($file)
     {
-        $img = ImageManagerStatic::make($file)->encode('jpg');
+        $img = ImageManagerStatic::make($file)->encode('jpg', 2);
         $original_filename = $file->getClientOriginalName();
         $name = time() .Str::random(50).'_'.$original_filename;
         Storage::disk('public')->put($name, $img);

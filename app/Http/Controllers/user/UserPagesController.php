@@ -79,4 +79,64 @@ class UserPagesController extends Controller
         ];
         return view('user.videos', ['settings' => $this->settings, 'data' => $data]);
     }
+
+    public function albumsPage()
+    {
+        $data = [
+            'title'       => 'Albums - '.  $this->settings->app_name,
+            'keywords'    => 'Albums - '.  $this->settings->app_name,
+            'description' => 'Albums - '.  $this->settings->app_name,
+        ];
+        return view('user.albums', ['settings' => $this->settings, 'data' => $data]);
+    }
+
+    public function picturesPage($album_id)
+    {
+        $data = [
+            'title'       => 'Pictures - '.  $this->settings->app_name,
+            'keywords'    => 'Pictures - '.  $this->settings->app_name,
+            'description' => 'Pictures - '.  $this->settings->app_name,
+        ];
+        return view('user.pictures', ['settings' => $this->settings, 'data' => $data, 'album_id' => $album_id]);
+    }
+
+    public function subPicturesPage($sub_album_id)
+    {
+        $data = [
+            'title'       => 'Pictures - '.  $this->settings->app_name,
+            'keywords'    => 'Pictures - '.  $this->settings->app_name,
+            'description' => 'Pictures - '.  $this->settings->app_name,
+        ];
+        return view('user.sub_pictures', ['settings' => $this->settings, 'data' => $data, 'sub_album_id' => $sub_album_id]);
+    }
+
+    public function subSubPicturesPage($sub_sub_album_id)
+    {
+        $data = [
+            'title'       => 'Pictures - '.  $this->settings->app_name,
+            'keywords'    => 'Pictures - '.  $this->settings->app_name,
+            'description' => 'Pictures - '.  $this->settings->app_name,
+        ];
+        return view('user.sub_sub_pictures', ['settings' => $this->settings, 'data' => $data, 'sub_sub_album_id' => $sub_sub_album_id]);
+    }
+
+    public function subAlbumsPage($album_id)
+    {
+        $data = [
+            'title'       => 'Albums - '.  $this->settings->app_name,
+            'keywords'    => 'Albums - '.  $this->settings->app_name,
+            'description' => 'Albums - '.  $this->settings->app_name,
+        ];
+        return view('user.sub_albums', ['settings' => $this->settings, 'data' => $data, 'album_id' => $album_id]);
+    }
+
+    public function subSubAlbumsPage($sub_album_id)
+    {
+        $data = [
+            'title'       => 'Albums - '.  $this->settings->app_name,
+            'keywords'    => 'Albums - '.  $this->settings->app_name,
+            'description' => 'Albums - '.  $this->settings->app_name,
+        ];
+        return view('user.sub_sub_albums', ['settings' => $this->settings, 'data' => $data, 'sub_album_id' => $sub_album_id]);
+    }
 }

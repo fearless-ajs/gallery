@@ -37,11 +37,6 @@
 
 
 
-
-
-
-
-
                 <!-- Next page -->
                 @if ($paginator->hasMorePages())
                     <li class="page-item" wire:click="nextPage">

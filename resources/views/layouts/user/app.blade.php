@@ -68,7 +68,7 @@
                         <a href="#" class="@if(Route::currentRouteName() == 'user.videos' || Route::currentRouteName() == 'user.pictures') act-link @endif ">Galleries </a>
                         <!--second level -->
                         <ul>
-                            <li><a href="pictures.html">Pictures</a></li>
+                            <li><a href="{{route('user.albums')}}">Pictures</a></li>
                             <li><a href="{{route('user.videos')}}">Videos</a></li>
                         </ul>
                         <!--second level end-->
