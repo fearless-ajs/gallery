@@ -6,6 +6,7 @@
         </div>
         <div class="card-body">
             <p class="login-box-msg">Sign in to start your session</p>
+            <x-alert />
             <form wire:submit.prevent="login" method="post">
                 <div class="input-group mb-3">
                     <input type="email" required wire:model.lazy="email" class="form-control {{$errors->has('email')? 'is-invalid' : '' }}" placeholder="Email">
@@ -47,7 +48,7 @@
             <!-- /.social-auth-links -->
 
             <p class="mb-1">
-                <a href="forgot-password.html">I forgot my password</a>
+                <a href="{{route('reset')}}">I forgot my password</a>
             </p>
         </div>
         <!-- /.card-body -->

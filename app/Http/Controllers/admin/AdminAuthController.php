@@ -13,6 +13,11 @@ class AdminAuthController extends Controller
         return view('admin.login');
     }
 
+    public function reset()
+    {
+        return view('admin.reset');
+    }
+
     public function register()
     {
         return view('admin.register');

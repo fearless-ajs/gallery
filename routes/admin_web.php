@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/login',            [AdminAuthController::class, 'login'])->name('login');
+Route::get('/reset',            [AdminAuthController::class, 'reset'])->name('reset');
 
 Route::middleware('auth')->group(function () {
     Route::middleware('role:administrator')->group(function (){
