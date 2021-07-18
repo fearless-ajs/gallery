@@ -18,6 +18,7 @@ class CreateHomePagesTable extends Migration
             $table->string('caption')->nullable();
             $table->string('title')->nullable();
             $table->text('content')->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

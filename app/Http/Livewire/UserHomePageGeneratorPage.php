@@ -49,7 +49,7 @@ class UserHomePageGeneratorPage extends Component
         $page =  HomePage::latest()->first();
         if ($this->image){
             //Check if there's is an existing image
-            if ($page->image){
+            if ($page && $page->image){
                 $this->deleteOldFile($page->image);
                 $image = $this->storeFile();
             }else{
@@ -57,7 +57,7 @@ class UserHomePageGeneratorPage extends Component
             }
 
         }else{
-            if ($page->image){
+            if ($page && $page->image){
                 $image = $page->image;
             }else{
                 $image = '';

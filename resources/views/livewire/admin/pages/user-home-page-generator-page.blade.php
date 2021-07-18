@@ -71,7 +71,8 @@
                                 @if($image)
                                     <img src="{{$image->temporaryUrl()}}" class="img-fluid" />
                                 @else
-                                    @if($homepage->image)
+
+                                    @if($homepage && $homepage->image)
                                         <img src="{{$old_image}}" class="img-fluid" />
                                         <small wire:click="removeImage" style="cursor:pointer;" class="form-text text-muted"><i wire:loading wire:target="removeImage" class="fa fa-spin"><i class="fa fa-spinner"></i></i> >> Remove image</small>
                                     @endif
