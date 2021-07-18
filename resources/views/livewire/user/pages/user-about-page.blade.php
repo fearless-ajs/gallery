@@ -1,4 +1,6 @@
 <div class="content">
+
+    @if($page)
     <!-- column-image  -->
     <div class="column-image">
         <div class="bg"  data-bg="
@@ -11,9 +13,11 @@
 
         <div class="fixed-column-dec"></div>
     </div>
+    @endif
     <!-- column-image end  -->
     <!-- column-wrapper -->
     <div class="column-wrapper">
+    @if($page)
         <!--section  -->
         <section id="sec1">
             <div class="container small-container">
@@ -30,8 +34,10 @@
                 </div>
             </div>
         </section>
+    @endif
         <!--section end  -->
         <div class="sec-dec"></div>
+
 
         <!--footer -->
         <footer class="min-footer fl-wrap content-animvisible">

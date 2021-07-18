@@ -20,6 +20,8 @@
             <div>03. <span>Open Houses</span></div>
         </div>
         <!--hero-decor-let end-->
+
+        @if($page)
         <!--home-main_title-->
         <div class="home-main_title">
             <div class="home-main_title_item">
@@ -33,6 +35,8 @@
         <div class="slider-mask"></div>
         <!--bg image-->
         <div class="bg" data-bg="{{$page->ImagePath}}"></div>
+        @endif
+
         <div class="overlay"></div>
         <!--bg image end-->
     </div>

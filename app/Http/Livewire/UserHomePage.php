@@ -19,7 +19,10 @@ class UserHomePage extends Component
 
     public function fetchPageData()
     {
-       $this->page =  HomePage::latest()->first();
+       $page =   HomePage::latest()->first();
+       if ($page){
+           $this->page = $page;
+       }
     }
 
     public function fetchSettings()

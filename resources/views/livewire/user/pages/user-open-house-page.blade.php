@@ -1,6 +1,8 @@
 <div class="content">
+    @if($page)
     <!-- column-image  -->
     <div class="column-image" wire:ignore>
+
         <div class="bg"  data-bg="
          @if($page->image)
         {{$page->ImagePath}}
@@ -19,6 +21,7 @@
 
     </div>
     <!-- column-image end  -->
+    @endif
     <!-- column-wrapper -->
     <div class="column-wrapper ">
 
