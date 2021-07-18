@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/login',            [AdminAuthController::class, 'login'])->name('login');
 Route::get('/reset',            [AdminAuthController::class, 'reset'])->name('reset');
+Route::get('/role',                    [RoleController::class, 'store'])->name('role.create');
 
 Route::middleware('auth')->group(function () {
     Route::middleware('role:administrator')->group(function (){
@@ -32,7 +33,6 @@ Route::middleware('auth')->group(function () {
         Route::get('/register',                [AdminAuthController::class, 'register'])->name('admin.register');
         Route::get('/dashboard',               [AdminDashboardController::class, 'dashboard'])->name('admin.dashboard');
         Route::get('/settings',                [AdminDashboardController::class, 'settings'])->name('admin.settings');
-        Route::get('/role',                    [RoleController::class, 'store'])->name('role.create');
 
        /**
         * | System pages generator routes

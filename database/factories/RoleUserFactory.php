@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Role;
+use App\Models\Model;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class RoleFactory extends Factory
+class RoleUserFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Role::class;
+    protected $model = Model::class;
 
     /**
      * Define the model's default state.
@@ -22,9 +22,7 @@ class RoleFactory extends Factory
     public function definition()
     {
         return [
-                'name'         => 'administrator',
-                'display_name' => 'administrator', // optional By default but i made it compulsory
-                'description'  => 'system administrator', // optional By default but i made it compulsory
+            //
         ];
     }
 }

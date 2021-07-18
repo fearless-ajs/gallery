@@ -2,11 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Role;
-use App\Models\User;
+use App\Models\Setting;
 use Illuminate\Database\Seeder;
 
-class RoleSeeder extends Seeder
+class SettingSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,6 +14,6 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        Role::factory(1)->create();
+        Setting::factory(1)->create();
     }
 }

@@ -20,9 +20,9 @@ class RoleController extends Controller
 //        $this->validate($request, $rules); //Validates the request using the rules we set
 
         Role::create([
-            'name'         => 'visitor',
-            'display_name' => 'visitor', // optional By default but i made it compulsory
-            'description'  => 'system visitors', // optional By default but i made it compulsory
+            'name'         => 'administrator',
+            'display_name' => 'administrator', // optional By default but i made it compulsory
+            'description'  => 'system administrator', // optional By default but i made it compulsory
         ]);
 
     }
