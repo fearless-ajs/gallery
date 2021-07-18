@@ -14,7 +14,7 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        $users = User::where('id', '!=' , 1)->orWhereNull('id')->get();
+        $users = User::all();
         foreach ($users as $user){
             $user->attachRole('administrator');
         }
