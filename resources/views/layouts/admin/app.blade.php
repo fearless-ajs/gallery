@@ -107,7 +107,7 @@
                     <li class="nav-item menu-open">
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{route('admin.dashboard')}}" class="nav-link active">
+                                <a href="{{route('admin.dashboard')}}" class="nav-link @if(Route::currentRouteName() == 'admin.dashboard') active @endif ">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Dashboard</p>
                                 </a>
@@ -115,7 +115,7 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="{{route('subscribers')}}" class="nav-link">
+                        <a href="{{route('subscribers')}}" class="nav-link  @if(Route::currentRouteName() == 'subscribers') active @endif">
                             <i class="nav-icon fas fa-users"></i>
                             <p>
                                 Subscribers
@@ -124,7 +124,20 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="#" class="nav-link
+                             @if(Route::currentRouteName() == 'albums.new' ||
+                                 Route::currentRouteName() == 'albums.all'  ||
+                                 Route::currentRouteName() == 'albums.edit' ||
+                                 Route::currentRouteName() == 'albums.pictures'||
+                                 Route::currentRouteName() == 'sub-albums.all' ||
+                                 Route::currentRouteName() == 'sub-albums.edit' ||
+                                 Route::currentRouteName() == 'sub-albums.pictures'  ||
+                                 Route::currentRouteName() == 'sub-sub-albums.all' ||
+                                 Route::currentRouteName() == 'sub-sub-albums.edit'||
+                                 Route::currentRouteName() == 'sub-sub-albums.pictures'
+
+                                 ) active @endif
+                        ">
                             <i class="nav-icon fas fa-chart-pie"></i>
                             <p>
                                 Albums
@@ -133,7 +146,7 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{route('albums.new')}}" class="nav-link">
+                                <a href="{{route('albums.new')}}" class="nav-link @if(Route::currentRouteName() == 'albums.new') active @endif">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>New</p>
                                 </a>
@@ -147,7 +160,7 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="#" class="nav-link @if(Route::currentRouteName() == 'videos.all' || Route::currentRouteName() == 'video.edit' ||Route::currentRouteName() == 'videos.new'  ) active @endif">
                             <i class="nav-icon fas fa-play"></i>
                             <p>
                                 Videos
@@ -156,13 +169,13 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{route('videos.new')}}" class="nav-link">
+                                <a href="{{route('videos.new')}}" class="nav-link @if(Route::currentRouteName() == 'videos.new') active @endif">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>New</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('videos.all')}}" class="nav-link">
+                                <a href="{{route('videos.all')}}" class="nav-link @if(Route::currentRouteName() == 'videos.all') active @endif">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>All videos</p>
                                 </a>
@@ -171,7 +184,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="#" class="nav-link  @if(Route::currentRouteName() == 'admin.all-articles' || Route::currentRouteName() == 'admin.edit-article' || Route::currentRouteName() == 'admin.new-article'  ) active @endif">
                             <i class="nav-icon fas fa-edit"></i>
                             <p>
                                 Articles
@@ -180,13 +193,13 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{route('admin.new-article')}}" class="nav-link">
+                                <a href="{{route('admin.new-article')}}" class="nav-link @if(Route::currentRouteName() == 'admin.new-article') active @endif">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>New</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('admin.all-articles')}}" class="nav-link">
+                                <a href="{{route('admin.all-articles')}}" class="nav-link @if(Route::currentRouteName() == 'admin.all-articles') active @endif">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>All articles</p>
                                 </a>
@@ -194,16 +207,16 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="#" class="nav-link @if(Route::currentRouteName() == 'admin.open-house-dates') active @endif">
                             <i class="nav-icon fas fa-table"></i>
                             <p>
-                                Component
+                                Open House
                                 <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{route('admin.open-house-dates')}}" class="nav-link">
+                                <a href="{{route('admin.open-house-dates')}}" class="nav-link @if(Route::currentRouteName() == 'admin.open-house-dates') active @endif">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Open house dates</p>
                                 </a>
@@ -212,7 +225,7 @@
                     </li>
                     <li class="nav-header">SYSTEM MENU</li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="#" class="nav-link @if(Route::currentRouteName() == 'admin.settings' || Route::currentRouteName() == 'admin.register')  active @endif">
                             <i class="nav-icon fas fa-edit"></i>
                             <p>
                                 Application
@@ -221,13 +234,13 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{route('admin.settings')}}" class="nav-link">
+                                <a href="{{route('admin.settings')}}" class="nav-link @if(Route::currentRouteName() == 'admin.settings') active @endif">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Settings</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('admin.register')}}" class="nav-link">
+                                <a href="{{route('admin.register')}}" class="nav-link @if(Route::currentRouteName() == 'admin.register') active @endif">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Register</p>
                                 </a>
@@ -236,7 +249,7 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="#" class="nav-link @if(Route::currentRouteName() == 'homepage.generate' || Route::currentRouteName() == 'about.generate' || Route::currentRouteName() == 'open-house.generate')  active @endif">
                             <i class="nav-icon fas fa-book"></i>
                             <p>
                                 Pages
@@ -245,19 +258,19 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{route('homepage.generate')}}" class="nav-link">
+                                <a href="{{route('homepage.generate')}}" class="nav-link @if(Route::currentRouteName() == 'homepage.generate') active @endif">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Homepage</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('about.generate')}}" class="nav-link">
+                                <a href="{{route('about.generate')}}" class="nav-link @if(Route::currentRouteName() == 'about.generate') active @endif">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>About</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('open-house.generate')}}" class="nav-link">
+                                <a href="{{route('open-house.generate')}}" class="nav-link @if(Route::currentRouteName() == 'open-house.generate') active @endif">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Open House</p>
                                 </a>

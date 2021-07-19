@@ -51,7 +51,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Description</label>
-                                    <textarea wire:model.lazy="details" class="form-control {{$errors->has('details')? 'is-invalid' : '' }}" placeholder="Describe this video"></textarea>
+                                    <textarea wire:model.lazy="details" class="form-control {{$errors->has('details')? 'is-invalid' : '' }}" placeholder="Describe the album"></textarea>
                                     @error('details') <span style="color: crimson; font-size: 10px;">{{ $message }}</span> @enderror
                                 </div>
                                 <!-- /.form-group -->
