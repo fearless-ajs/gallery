@@ -9,8 +9,10 @@ class AdminOpenHouseDatePage extends Component
 {
     public $dates;
 
-    public $date;
-    public $time;
+    public $start_date;
+    public $start_time;
+    public $end_date;
+    public $end_time;
     public $date_id;
 
     protected $listeners = ['refreshDates' => 'refresh'];
@@ -24,8 +26,10 @@ class AdminOpenHouseDatePage extends Component
     public function updated($field)
     {
         $this->validateOnly($field, [
-            'date' => 'required|max:255',
-            'time' => 'required|max:255',
+            'start_date' => 'required|max:255',
+            'start_time' => 'required|max:255',
+            'end_date'   => 'required|max:255',
+            'end_time'   => 'required|max:255',
         ]);
     }
 
@@ -36,14 +40,23 @@ class AdminOpenHouseDatePage extends Component
         }
 
         $this->validate([
-            'date' => 'required|max:255',
-            'time' => 'required|max:255',
+            'start_date' => 'required|max:255',
+            'start_time' => 'required|max:255',
+            'end_date'   => 'required|max:255',
+            'end_time'   => 'required|max:255',
         ]);
 
+        if (date(strtotime("$this->start_date $this->start_time")) > date(strtotime("$this->end_date $this->end_time"))){
+            return $this->emit('alert', ['type' => 'error', 'message' => 'End date must be greater than or equals start date']);
+        }
+
         OpenHouseDate::where('id', $this->date_id)->update([
-           'date' => $this->date,
-           'time' => $this->time,
-           'timestamp' => date(strtotime("$this->date $this->time")),
+            'start_date'      => $this->start_date,
+            'start_time'      => $this->start_time,
+            'start_timestamp' => date(strtotime("$this->start_date $this->start_time")),
+            'end_date'        => $this->end_date,
+            'end_time'        => $this->end_time,
+            'end_timestamp'   => date(strtotime("$this->end_date $this->end_time")),
         ]);
 
         $this->refresh();
@@ -56,16 +69,18 @@ class AdminOpenHouseDatePage extends Component
     }
 
     public function remove($id){
-        OpenHouseDate::where('id', $id)->delete();
+        OpenHouseDate::findOrFail($id)->delete();
         $this->emit('alert', ['type' => 'success', 'message' => 'Date deleted']);
-        $this->refresh();
+        return $this->refresh();
     }
 
     public function edit($id){
         $date = OpenHouseDate::findOrFail($id);
         $this->date_id = $date->id;
-        $this->date    = $date->date;
-        $this->time    = $date->time;
+        $this->start_date    = $date->start_date;
+        $this->start_time    = $date->start_time;
+        $this->end_date      = $date->end_date;
+        $this->end_time      = $date->end_time;
     }
     public function render()
     {

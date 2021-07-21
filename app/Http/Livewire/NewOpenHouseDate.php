@@ -7,28 +7,42 @@ use Livewire\Component;
 
 class NewOpenHouseDate extends Component
 {
-    public $date;
-    public $time;
+    public $start_date;
+    public $start_time;
+    public $end_date;
+    public $end_time;
 
     public function updated($field)
     {
         $this->validateOnly($field, [
-           'date' => 'required|max:255',
-           'time' => 'required|max:255',
+           'start_date' => 'required|max:255',
+           'start_time' => 'required|max:255',
+           'end_date'   => 'required|max:255',
+           'end_time'   => 'required|max:255',
         ]);
     }
 
     public function save()
     {
         $this->validate([
-            'date' => 'required|max:255',
-            'time' => 'required|max:255',
+            'start_date' => 'required|max:255',
+            'start_time' => 'required|max:255',
+            'end_date'   => 'required|max:255',
+            'end_time'   => 'required|max:255',
         ]);
 
+        //Check for bad date formatting
+        if (date(strtotime("$this->start_date $this->start_time")) > date(strtotime("$this->end_date $this->end_time"))){
+            return $this->emit('alert', ['type' => 'error', 'message' => 'End date must be greater than or equals start date']);
+        }
+
         OpenHouseDate::create([
-            'date'      => $this->date,
-            'time'      => $this->time,
-            'timestamp' => date(strtotime("$this->date $this->time")),
+            'start_date'      => $this->start_date,
+            'start_time'      => $this->start_time,
+            'start_timestamp' => date(strtotime("$this->start_date $this->start_time")),
+            'end_date'        => $this->end_date,
+            'end_time'        => $this->end_time,
+            'end_timestamp'   => date(strtotime("$this->end_date $this->end_time")),
         ]);
 
         $this->clear(); //Clear user inputs
@@ -39,8 +53,10 @@ class NewOpenHouseDate extends Component
 
     public function clear()
     {
-        $this->date = '';
-        $this->time = '';
+       $this->start_time = '';
+       $this->start_date = '';
+       $this->end_time   = '';
+       $this->end_date   = '';
     }
 
     public function render()

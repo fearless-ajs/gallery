@@ -38,6 +38,7 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
+                    <x-alert />
                     <form wire:submit.prevent="save">
 
                         <div class="row">

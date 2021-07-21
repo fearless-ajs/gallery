@@ -15,9 +15,12 @@ class CreateOpenHouseDatesTable extends Migration
     {
         Schema::create('open_house_dates', function (Blueprint $table) {
             $table->id();
-            $table->string('date');
-            $table->string('time');
-            $table->string('timestamp');
+            $table->string('start_date');
+            $table->string('start_time');
+            $table->string('start_timestamp');
+            $table->string('end_date');
+            $table->string('end_time');
+            $table->string('end_timestamp');
             $table->timestamps();
         });
     }

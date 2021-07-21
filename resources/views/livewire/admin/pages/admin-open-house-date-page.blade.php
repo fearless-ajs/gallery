@@ -76,9 +76,15 @@
                                         <blockquote>
                                             @if($dates)
                                                @foreach($dates as $date)
-                                                   <p style="cursor: pointer;" wire:click="edit({{$date->id}})">
-                                                       {{strftime("%A", $date->timestamp)}} , {{$date->date}} | {{strftime("%I", $date->timestamp)}}:{{strftime("%M", $date->timestamp)}} {{strftime("%p", $date->timestamp)}}
-                                                       &nbsp;<span style="cursor: pointer;" wire:click="remove({{$date->id}})"  wire:loading.remove wire:target="remove({{$date->id}})" class="fas fa-times text-danger" role="status" aria-hidden="true"></span>
+                                                   <p>
+                                                       <span style="cursor: pointer;" wire:click="edit({{$date->id}})">
+                                                       Start: {{strftime("%A", $date->start_timestamp)}} , {{$date->start_date}}
+                                                       {{strftime("%I", $date->start_timestamp)}}:{{strftime("%M", $date->start_timestamp)}} {{strftime("%p", $date->start_timestamp)}} |
+                                                       End: {{strftime("%A", $date->end_timestamp)}} , {{$date->end_date}}
+                                                       {{strftime("%I", $date->end_timestamp)}}:{{strftime("%M", $date->end_timestamp)}} {{strftime("%p", $date->end_timestamp)}} &nbsp; &nbsp;
+                                                       &nbsp;
+                                                      </span>
+                                                       <span style="cursor: pointer;" wire:click="remove({{$date->id}})"  wire:loading.remove wire:target="remove({{$date->id}})" class="fas fa-times text-danger" role="status" aria-hidden="true"></span>
                                                        <span wire:loading wire:target="remove({{$date->id}})" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                                                    </p>
                                                @endforeach
@@ -103,25 +109,44 @@
                                     <!-- /.card-header -->
                                     <div class="card-body clearfix">
                                         <form wire:submit.prevent="save">
-                                        <!-- /.col -->
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>Date</label>
-                                                <input type="date" wire:model.lazy="date" class="form-control {{$errors->has('date')? 'is-invalid' : '' }}">
-                                                @error('date') <span style="color: crimson; font-size: 10px;">{{ $message }}</span> @enderror
+                                            <!-- /.col -->
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>Start Date</label>
+                                                    <input type="date" wire:model.lazy="start_date" class="form-control {{$errors->has('start_date')? 'is-invalid' : '' }}">
+                                                    @error('start_date') <span style="color: crimson; font-size: 10px;">{{ $message }}</span> @enderror
+                                                </div>
+                                                <!-- /.form-group -->
+                                                <!-- /.form-group -->
                                             </div>
-                                            <!-- /.form-group -->
-                                            <!-- /.form-group -->
-                                        </div>
-                                        <!-- /.col -->
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>Time</label>
-                                                <input type="time" wire:model.lazy="time" class="form-control {{$errors->has('time')? 'is-invalid' : '' }}">
-                                                @error('time') <span style="color: crimson; font-size: 10px;">{{ $message }}</span> @enderror
+                                            <!-- /.col -->
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>Start Time</label>
+                                                    <input type="time" wire:model.lazy="start_time" class="form-control {{$errors->has('start_time')? 'is-invalid' : '' }}">
+                                                    @error('start_time') <span style="color: crimson; font-size: 10px;">{{ $message }}</span> @enderror
+                                                </div>
+                                                <!-- /.form-group -->
                                             </div>
-                                            <!-- /.form-group -->
-                                        </div>
+                                            <!-- /.col -->
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>End Date</label>
+                                                    <input type="date" wire:model.lazy="end_date" class="form-control {{$errors->has('end_date')? 'is-invalid' : '' }}">
+                                                    @error('end_date') <span style="color: crimson; font-size: 10px;">{{ $message }}</span> @enderror
+                                                </div>
+                                                <!-- /.form-group -->
+                                                <!-- /.form-group -->
+                                            </div>
+                                            <!-- /.col -->
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>End Time</label>
+                                                    <input type="time" wire:model.lazy="end_time" class="form-control {{$errors->has('end_time')? 'is-invalid' : '' }}">
+                                                    @error('end_time') <span style="color: crimson; font-size: 10px;">{{ $message }}</span> @enderror
+                                                </div>
+                                                <!-- /.form-group -->
+                                            </div>
 
                                         <button wire:loading.remove wire:target="save" type="submit" class="btn btn-primary">Save date</button>
                                         <button disabled wire:loading wire:target="save" type="submit" class="btn btn-primary"> Processing  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> </button>

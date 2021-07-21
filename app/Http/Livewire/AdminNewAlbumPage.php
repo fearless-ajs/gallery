@@ -40,15 +40,17 @@ class AdminNewAlbumPage extends Component
         //Store the image and return the name
         $image = $this->storeFile($this->image);
 
-        Album::create([
+       $album =  Album::create([
             'title'   => $this->title,
             'details' => $this->details,
             'content' => $this->content,
             'image'   => $image
         ]);
 
-        $this->clear(); //clear user inputs
-        return $this->emit('alert', ['type' => 'success', 'message' => 'Album created!']);
+        session()->flash('message', 'Album created.');
+        redirect()->route('album.edit', $album->id);
+//        $this->clear(); //clear user inputs
+//        return $this->emit('alert', ['type' => 'success', 'message' => 'Album created!']);
     }
 
     public function storeFile($file)

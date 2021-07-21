@@ -46,15 +46,17 @@ class AddAlbumToSubAlbum extends Component
         //Store the image and return the name
         $image = $this->storeFile($this->image);
 
-        SubSubAlbum::create([
+        $album = SubSubAlbum::create([
             'sub_album_id' => $this->album_id,
             'title'        => $this->title,
             'details'      => $this->details,
             'image'        => $image
         ]);
 
-        $this->clear(); //clear user inputs
-        return $this->emit('alert', ['type' => 'success', 'message' => 'Album created!']);
+        session()->flash('message', 'Album created.');
+        redirect()->route('sub-sub-album.edit', $album->id);
+//        $this->clear(); //clear user inputs
+//        return $this->emit('alert', ['type' => 'success', 'message' => 'Album created!']);
     }
 
     public function storeFile($file)

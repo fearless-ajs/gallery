@@ -36,7 +36,14 @@
                     @if($dates)
                         @foreach($dates as $date)
                         <h4>​
-                            {{strftime("%A", $date->timestamp)}}, {{strftime("%B", $date->timestamp)}} {{strftime("%d", $date->timestamp)}}, {{strftime("%G", $date->timestamp)}}, {{strftime("%I", $date->timestamp)}}:{{strftime("%M", $date->timestamp)}} {{strftime("%p", $date->timestamp)}}
+                            Starting: {{strftime("%A", $date->start_timestamp)}},
+                            {{strftime("%B", $date->start_timestamp)}} {{strftime("%d", $date->start_timestamp)}},
+                            {{strftime("%G", $date->start_timestamp)}}, {{strftime("%I", $date->start_timestamp)}}:{{strftime("%M", $date->start_timestamp)}} {{strftime("%p", $date->start_timestamp)}}
+                             ||
+                            Ending: {{strftime("%A", $date->end_timestamp)}},
+                            {{strftime("%B", $date->end_timestamp)}} {{strftime("%d", $date->end_timestamp)}},
+                            {{strftime("%G", $date->end_timestamp)}}, {{strftime("%I", $date->end_timestamp)}}:{{strftime("%M", $date->end_timestamp)}} {{strftime("%p", $date->end_timestamp)}}
+
                         </h4>
                         @endforeach
                     @endif
