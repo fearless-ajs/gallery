@@ -91,7 +91,7 @@
                             <div class="col-sm-12">
                                 <div class="form-group">
                                     <label>Cover Image <sup>max 400kb</sup></label>
-                                    <input type="file" wire:model.lazy="image" class="form-control {{$errors->has('image')? 'is-invalid' : '' }}">
+                                    <input type="file" wire:model="image" class="form-control {{$errors->has('image')? 'is-invalid' : '' }}">
                                     @if($image)
                                         <img src="{{$image->temporaryUrl()}}" class="img-fluid" />
                                     @else

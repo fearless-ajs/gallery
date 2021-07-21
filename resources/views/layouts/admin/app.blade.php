@@ -22,6 +22,8 @@
     <!-- Tempusdominus Bootstrap 4 -->
     <link rel="stylesheet" href="{{asset('admin/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css')}}">
 
+    <link rel="stylesheet" href="{{asset('admin/plugins/summernote/summernote-bs4.min.css')}}">
+
     <link rel="stylesheet" href="{{asset('admin/dist/css/toastr.css')}}">
     <!--Laravel livewire styles  -->
     <livewire:styles />
@@ -317,6 +319,10 @@
 <script src="{{asset('admin/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- overlayScrollbars -->
 <script src={{asset('admin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}""></script>
+
+<!-- Summernote -->
+<script src="{{asset('admin/plugins/summernote/summernote-bs4.min.js')}}"></script>
+
 <!-- AdminLTE App -->
 <script src="{{asset('admin/dist/js/adminlte.js')}}"></script>
 
@@ -366,6 +372,24 @@
 <script>
     window.livewire.on('alert', param => {
         toastr[param['type']](param['message'], param['type']);
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $("#summernote").summernote({
+            height: 300,
+            toolbar: [
+                [ 'style', [ 'style' ] ],
+                [ 'font', [ 'bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subscript', 'clear'] ],
+                [ 'fontname', [ 'fontname' ] ],
+                [ 'fontsize', [ 'fontsize' ] ],
+                [ 'color', [ 'color' ] ],
+                [ 'para', [ 'ol', 'ul', 'paragraph', 'height' ] ],
+                [ 'table', [ 'table' ] ],
+                [ 'insert', [ 'link'] ],
+                [ 'view', [ 'undo', 'redo', 'fullscreen', 'codeview', 'help' ] ]
+            ]
+        });
     });
 </script>
 </body>

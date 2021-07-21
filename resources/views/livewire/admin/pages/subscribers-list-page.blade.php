@@ -44,8 +44,8 @@
                                         <tr data-widget="expandable-table" aria-expanded="false">
                                             <td>Expand</td>
                                             <td>{{$sub->email}}</td>
-                                            <td>{{$sub->lastname}}</td>
-                                            <td>{{$sub->firstname}}</td>
+                                            <td>{{$sub->last_name}}</td>
+                                            <td>{{$sub->first_name}}</td>
                                             <td>{{$sub->created_at->format('d M Y')}}</td>
                                         </tr>
                                         <tr class="expandable-body">

@@ -47,7 +47,7 @@
                             </ul>
                         </div>
                         <p>
-                            {{ Str::limit($article->content_1, $limit = 500, $end = '...') }}
+                            {!! Str::limit($article->content_1, $limit = 500, $end = '...') !!}
                         </p>
                         <a href="{{route('user.view.article', $article->id)}}" class="btn float-btn flat-btn">Read more </a>
                     </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\OpenHouseSubscription;
 use App\Models\Subscriber;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -19,7 +20,7 @@ class SubscribersListPage extends Component
     public function render()
     {
         return view('livewire.admin.pages.subscribers-list-page', [
-            'subscribers' => Subscriber::latest()->paginate(20)
+            'subscribers' => OpenHouseSubscription::latest()->paginate(20)
         ]);
     }
 }

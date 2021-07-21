@@ -50,17 +50,9 @@
                                 <li><a href="#">{{$article->author}}</a></li>
                             </ul>
                         </div>
-                        <p>
-                            {{$article->content_1}}
-                        </p>
-                        @if($article->quote)
-                        <blockquote>
-                            <p>{{$article->quote}} </p>
-                        </blockquote>
-                        @endif
-                        <p>
-                            {{$article->content_2}}
-                        </p>
+
+                            {!! $article->content_1 !!}
+
 
                     </div>
 

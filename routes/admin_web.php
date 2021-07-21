@@ -5,6 +5,7 @@ use App\Http\Controllers\admin\AdminDashboardController;
 use App\Http\Controllers\admin\AdminGalleryController;
 use App\Http\Controllers\admin\AdminPagesController;
 use App\Http\Controllers\admin\AdminSubscribersController;
+use App\Http\Controllers\admin\ArticleController;
 use App\Http\Controllers\RBAC\RoleController;
 use Illuminate\Support\Facades\Route;
 
@@ -42,9 +43,11 @@ Route::middleware('auth')->group(function () {
         Route::get('/generate/about',                               [AdminPagesController::class, 'aboutPage'])->name('about.generate');
         Route::get('/generate/open-house',                          [AdminPagesController::class, 'openHousePage'])->name('open-house.generate');
         Route::get('/open-house',                                   [AdminPagesController::class, 'openHouseDatePage'])->name('admin.open-house-dates');
-        Route::get('/new-article',                                  [AdminPagesController::class, 'newArticlePage'])->name('admin.new-article');
-        Route::get('/all-article',                                  [AdminPagesController::class, 'articleListPage'])->name('admin.all-articles');
-        Route::get('/edit-article/{id}',                            [AdminPagesController::class, 'editArticlePage'])->name('admin.edit-article');
+        Route::get('/new-article',                                  [ArticleController::class, 'newArticlePage'])->name('admin.new-article');
+        Route::get('/all-article',                                  [ArticleController::class, 'articleListPage'])->name('admin.all-articles');
+        Route::get('/edit-article/{id}',                            [ArticleController::class, 'editArticlePage'])->name('admin.edit-article');
+        Route::post('/save-article',                                [ArticleController::class, 'save'])->name('article.save');
+        Route::post('/update-article/{article}',                    [ArticleController::class, 'update'])->name('article.update');
 
         /**
          * | System gallery generator routes

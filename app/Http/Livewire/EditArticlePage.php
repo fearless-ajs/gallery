@@ -42,11 +42,7 @@ class EditArticlePage extends Component
             'category'  => 'required|max:255',
             'author'    => 'required|max:255',
             'image_1'   => 'nullable|image|max:2000',
-            'image_2'   => 'nullable|image|max:2000',
-            'image_3'   => 'nullable|image|max:2000',
             'content_1' => 'required|max:4000',
-            'quote'     => 'nullable|max:1000',
-            'content_2' => 'nullable|max:4000',
         ]);
     }
 
@@ -57,11 +53,7 @@ class EditArticlePage extends Component
             'category'  => 'required|max:255',
             'author'    => 'required|max:255',
             'image_1'   => 'nullable|image|max:2000',
-            'image_2'   => 'nullable|image|max:2000',
-            'image_3'   => 'nullable|image|max:2000',
             'content_1' => 'required|max:4000',
-            'quote'     => 'nullable|max:1000',
-            'content_2' => 'nullable|max:4000',
         ]);
 
         if ($this->image_1){
@@ -99,14 +91,10 @@ class EditArticlePage extends Component
             'category'  => $this->category,
             'author'    => $this->author,
             'image_1'   => $image_1,
-            'image_2'   => $image_2,
-            'image_3'   => $image_3,
             'content_1' => $this->content_1,
-            'quote'     => $this->quote,
-            'content_2' => $this->content_2,
         ]);
 
-        return $this->emit('alert', ['type' => 'success', 'message' => 'Article update']);
+        return $this->emit('alert', ['type' => 'success', 'message' => 'Article updated']);
     }
 
     public function removeImage($image_type, $filename)

@@ -28,7 +28,7 @@ class AddPictureToSubAlbum extends Component
     public function updated($field)
     {
         $this->validateOnly($field, [
-            'image'   => 'required|image|max:20000',
+            'image'   => 'required|file|image|mimes:jpeg,png,jpg,gif,svg|max:20480',
             'caption' => 'nullable|max:255',
         ]);
     }
@@ -36,7 +36,7 @@ class AddPictureToSubAlbum extends Component
     public function save()
     {
         $this->validate([
-            'image'   => 'required|image|max:20000',
+            'image'   => 'required|file|image|mimes:jpeg,png,jpg,gif,svg|max:20480',
             'caption' => 'nullable|max:255',
         ]);
 

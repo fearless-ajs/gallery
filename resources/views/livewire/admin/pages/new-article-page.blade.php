@@ -36,33 +36,34 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <form wire:submit.prevent="save">
-
+                    <x-alert />
+                    <form action="{{route('article.save')}}" method="post" enctype="multipart/form-data">
+                        @csrf
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-6" wire:ignore>
                                 <div class="form-group">
                                     <label>Title</label>
-                                    <input type="text" wire:model.lazy="title" class="form-control {{$errors->has('title')? 'is-invalid' : '' }}" placeholder="Article title">
+                                    <input type="text" value="{{old('title')}}" name="title" class="form-control {{$errors->has('title')? 'is-invalid' : '' }}" placeholder="Article title">
                                     @error('title') <span style="color: crimson; font-size: 10px;">{{ $message }}</span> @enderror
                                 </div>
                                 <!-- /.form-group -->
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-6" wire:ignore>
                                 <!-- /.form-group -->
                                 <div class="form-group">
                                     <label>Category</label>
-                                    <input type="text" wire:model.lazy="category" class="form-control {{$errors->has('category')? 'is-invalid' : '' }}" placeholder="Article category">
+                                    <input type="text" name="category" value="{{old('category')}}" class="form-control {{$errors->has('category')? 'is-invalid' : '' }}" placeholder="Article category">
                                     @error('category') <span style="color: crimson; font-size: 10px;">{{ $message }}</span> @enderror
                                 </div>
                                 <!-- /.form-group -->
                             </div>
 
                             <!-- /.col -->
-                            <div class="col-md-12">
+                            <div class="col-md-12" wire:ignore>
                                 <div class="form-group">
                                     <label>Author Name</label>
-                                    <input type="author" wire:model.lazy="author" class="form-control {{$errors->has('author')? 'is-invalid' : '' }}" placeholder="Article arthor">
+                                    <input type="author" name="author" value="{{old('author')}}"class="form-control {{$errors->has('author')? 'is-invalid' : '' }}" placeholder="Article arthor">
                                     @error('author') <span style="color: crimson; font-size: 10px;">{{ $message }}</span> @enderror
                                 </div>
                                 <!-- /.form-group -->
@@ -75,7 +76,7 @@
                             <div class="col-12 col-sm-12">
                                 <div class="form-group">
                                     <label>Image 1</label>
-                                    <input type="file" wire:model.lazy="image_1" class="form-control {{$errors->has('image_1')? 'is-invalid' : '' }}">
+                                    <input type="file" name="image_1" wire:model.lazy="image_1" class="form-control {{$errors->has('image_1')? 'is-invalid' : '' }}">
                                     @if($image_1)
                                         <img src="{{$image_1->temporaryUrl()}}" class="img-fluid" />
                                     @endif
@@ -84,61 +85,15 @@
                                 </div>
                                 <!-- /.form-group -->
                             </div>
-                            <div class="col-12 col-sm-12">
-                                <div class="form-group">
-                                    <label>Image 2</label>
-                                    <input type="file" wire:model.lazy="image_2" class="form-control {{$errors->has('image_2')? 'is-invalid' : '' }}">
-                                    @if($image_2)
-                                        <img src="{{$image_2->temporaryUrl()}}" class="img-fluid" />
-                                    @endif
-                                    @error('image_2') <span style="color: crimson; font-size: 10px;">{{ $message }}</span> @enderror
-                                    <small wire:loading wire:target="image_2" class="form-text text-muted"><i class="fa fa-spin"><i class="fa fa-spinner"></i></i>&nbsp;&nbsp; Loading preview...</small>
-                                </div>
-                                <!-- /.form-group -->
-                            </div>
-                            <div class="col-12 col-sm-12">
-                                <div class="form-group">
-                                    <label>Image 3</label>
-                                    <input type="file" wire:model.lazy="image_3" class="form-control {{$errors->has('image_3')? 'is-invalid' : '' }}">
-                                    @if($image_3)
-                                        <img src="{{$image_3->temporaryUrl()}}" class="img-fluid" />
-                                    @endif
-                                    @error('image_3') <span style="color: crimson; font-size: 10px;">{{ $message }}</span> @enderror
-                                    <small wire:loading wire:target="image_3" class="form-text text-muted"><i class="fa fa-spin"><i class="fa fa-spinner"></i></i>&nbsp;&nbsp; Loading preview...</small>
-                                </div>
-                                <!-- /.form-group -->
-                            </div>
 
-
-                            <div class="col-12 col-sm-12">
+                            <div class="col-12 col-sm-12" wire:ignore>
                                 <div class="form-group">
                                     <label>Content</label>
-                                    <textarea rows="5" placeholder="Content" wire:model.lazy="content_1" class="form-control {{$errors->has('content_1')? 'is-invalid' : '' }}"></textarea>
+                                    <textarea rows="5" name="content_1" id="summernote" placeholder="Content" class="form-control {{$errors->has('content_1')? 'is-invalid' : '' }}">{{old('content_1')}}</textarea>
                                     @error('content_1') <span style="color: crimson; font-size: 10px;">{{ $message }}</span> @enderror
                                 </div>
                                 <!-- /.form-group -->
                             </div>
-
-                            <div class="col-12 col-sm-12">
-                                <div class="form-group">
-                                    <label>Quote</label>
-                                    <textarea placeholder="Drop a quote here..." wire:model.lazy="quote" class="form-control {{$errors->has('quote')? 'is-invalid' : '' }}"></textarea>
-                                    @error('quote') <span style="color: crimson; font-size: 10px;">{{ $message }}</span> @enderror
-                                </div>
-                                <!-- /.form-group -->
-                            </div>
-
-                            <div class="col-12 col-sm-12">
-                                <div class="form-group">
-                                    <label>Content continuation</label>
-                                    <textarea rows="5" placeholder="Content cotinues here" wire:model.lazy="content_2" class="form-control {{$errors->has('content_1')? 'is-invalid' : '' }}"></textarea>
-                                    @error('content_2') <span style="color: crimson; font-size: 10px;">{{ $message }}</span> @enderror
-                                </div>
-                                <!-- /.form-group -->
-                            </div>
-
-
-
 
                         </div>
                         <!-- /.row -->

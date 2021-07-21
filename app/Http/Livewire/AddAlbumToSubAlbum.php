@@ -31,7 +31,7 @@ class AddAlbumToSubAlbum extends Component
         $this->validateOnly($field, [
             'title'   => 'required|max:255',
             'details' => 'required|max:1000',
-            'image'   => 'required|image|max:500',
+            'image'   => 'required|file|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
     }
 
@@ -40,7 +40,7 @@ class AddAlbumToSubAlbum extends Component
         $this->validate([
             'title'   => 'required|max:255',
             'details' => 'required|max:1000',
-            'image'   => 'required|image|max:500',
+            'image'   => 'required|file|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         //Store the image and return the name
