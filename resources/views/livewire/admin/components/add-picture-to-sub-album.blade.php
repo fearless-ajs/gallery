@@ -32,15 +32,14 @@
 
             <div class="row">
 
-                <div class="col-sm-12">
+                <div class="col-sm-12" wire:ignore>
                     <div class="form-group">
-                        <label>Image <sup>max 20MB</sup></label>
-                        <input type="file" wire:model="image" class="form-control {{$errors->has('image')? 'is-invalid' : '' }}">
-                        @if($image)
-                            <img src="{{$image->temporaryUrl()}}" class="img-fluid" />
-                        @endif
-                        @error('image') <span style="color: crimson; font-size: 10px;">{{ $message }}</span> @enderror
-                        <small wire:loading wire:target="image" class="form-text text-muted"><i class="fa fa-spin"><i class="fa fa-spinner"></i></i>&nbsp;&nbsp; Loading preview...</small>
+                        <label>Images <sup>max 20MB</sup></label>
+                        <div class="file-loading">
+                            <input id="file-0" class="file" type="file" wire:model="images" multiple data-min-file-count="1" data-theme="fas">
+                        </div>
+                        <button type="reset" class="btn btn-outline-secondary">Reset</button>
+                        @error('images') <span style="color: crimson; font-size: 10px;">{{ $message }}</span> @enderror
                     </div>
                     <!-- /.form-group -->
                 </div>

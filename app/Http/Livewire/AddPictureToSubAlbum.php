@@ -16,7 +16,7 @@ class AddPictureToSubAlbum extends Component
 
     public $caption;
     public $image;
-
+    public $images = [];
     public $album_id;
 
     public function mount($album_id)
@@ -28,7 +28,7 @@ class AddPictureToSubAlbum extends Component
     public function updated($field)
     {
         $this->validateOnly($field, [
-            'image'   => 'required|file|image|mimes:jpeg,png,jpg,gif,svg|max:20480',
+            'images'   => 'required|array',
             'caption' => 'nullable|max:255',
         ]);
     }
@@ -36,22 +36,25 @@ class AddPictureToSubAlbum extends Component
     public function save()
     {
         $this->validate([
-            'image'   => 'required|file|image|mimes:jpeg,png,jpg,gif,svg|max:20480',
+            'images'   => 'required|array',
             'caption' => 'nullable|max:255',
         ]);
 
 
-        $original_image     = $this->storeFile($this->image);
-        // create a compressed version of the image
-        $compressed_version = $this->compressAndStoreFile($this->image, 2);
+        foreach ($this->images as $pic){
+            $original_image     = $this->storeFile($pic);
+            // create a compressed version of the image
+            $compressed_version = $this->compressAndStoreFile($pic, 2);
 
 
-        SubPicture::create([
-            'sub_album_id'    => $this->album_id,
-            'caption'         => $this->caption,
-            'original_image'  => $original_image,
-            'optimized_image' => $compressed_version
-        ]);
+            SubPicture::create([
+                'sub_album_id'    => $this->album_id,
+                'caption'         => $this->caption,
+                'original_image'  => $original_image,
+                'optimized_image' => $compressed_version
+            ]);
+        }
+
 
         $this->clear();
         return $this->emit('alert', ['type' => 'success', 'message' => 'Picture Added to album!']);
@@ -60,7 +63,7 @@ class AddPictureToSubAlbum extends Component
     public function clear()
     {
         $this->caption = '';
-        $this->image   = '';
+//        $this->image   = '';
     }
 
     public function storeFile($file)

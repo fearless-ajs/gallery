@@ -16,7 +16,7 @@ class CreatePicturesTable extends Migration
         Schema::create('pictures', function (Blueprint $table) {
             $table->id();
             $table->foreignId('album_id')->constrained('albums');
-            $table->string('caption');
+            $table->string('caption')->nullable();
             $table->string('optimized_image');
             $table->string('original_image');
             $table->timestamps();
