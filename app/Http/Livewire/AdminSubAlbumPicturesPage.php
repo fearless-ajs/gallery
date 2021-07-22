@@ -49,7 +49,7 @@ class AdminSubAlbumPicturesPage extends Component
     public function render()
     {
         return view('livewire.admin.pages.admin-sub-album-pictures-page', [
-            'images' => SubPicture::where('sub_album_id', $this->album_id)->latest()->paginate(20)
+            'images' => SubPicture::where('sub_album_id', $this->album_id)->latest()->paginate(400)
         ]);
     }
 }

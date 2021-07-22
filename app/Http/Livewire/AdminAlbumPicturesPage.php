@@ -50,7 +50,7 @@ class AdminAlbumPicturesPage extends Component
     public function render()
     {
         return view('livewire.admin.pages.admin-album-pictures-page', [
-            'images' => Picture::where('album_id', $this->album_id)->latest()->paginate(20)
+            'images' => Picture::where('album_id', $this->album_id)->latest()->paginate(400)
         ]);
     }
 }
