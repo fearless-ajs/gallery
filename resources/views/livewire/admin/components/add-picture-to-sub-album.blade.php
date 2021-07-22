@@ -48,10 +48,18 @@
             <!-- /.row -->
 
 
-            <button wire:loading.remove wire:target="save" type="submit" class="btn btn-primary">Save picture</button>
-            <button disabled wire:loading wire:target="save" type="submit" class="btn btn-primary"> Processing  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> </button>
-            <a href="{{route('sub-album.pictures', $album_id)}}" target="_blank" class="btn btn-default">All Pictures</a>
-        </form>
+            <div wire:loading.remove wire:target="images" >
+                <button wire:loading.remove wire:target="save" type="submit" class="btn btn-primary">Save picture</button>
+                <button disabled wire:loading wire:target="save" type="submit" class="btn btn-primary"> Processing  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> </button>
+                <a href="{{route('album.pictures', $album_id)}}" target="_blank" class="btn btn-default">All Pictures</a>
+            </div>
+
+            <div wire:loading wire:target="images">
+                <button disabled type="submit" class="btn btn-primary"> Loading images  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> </button>
+                <a href="{{route('album.pictures', $album_id)}}" target="_blank" class="btn btn-default">All Pictures</a>
+            </div>
+
+            </form>
     </div>
     <!-- /.card-body -->
     <div class="card-footer">
