@@ -6,6 +6,7 @@ use App\Http\Controllers\admin\AdminGalleryController;
 use App\Http\Controllers\admin\AdminPagesController;
 use App\Http\Controllers\admin\AdminSubscribersController;
 use App\Http\Controllers\admin\ArticleController;
+use App\Http\Controllers\admin\ImageController;
 use App\Http\Controllers\RBAC\RoleController;
 use Illuminate\Support\Facades\Route;
 
@@ -61,7 +62,12 @@ Route::middleware('auth')->group(function () {
         Route::get('/albums/new',                                   [AdminGalleryController::class, 'newAlbumPage'])->name('albums.new');
         Route::get('/all-albums',                                   [AdminGalleryController::class, 'allAlbumsPage'])->name('albums.all');
         Route::get('/edit-albums/{id}',                             [AdminGalleryController::class, 'editAlbumPage'])->name('album.edit');
-        Route::get('/album-pictures/{album_id}',                    [AdminGalleryController::class, 'albumPicturesPage'])->name('album.pictures');
+        Route::post('/save-images/{album}',                         [ImageController::class, 'savePicture'])->name('album.images.save');
+        Route::post('/save-sub-images/{sub_album}',                 [ImageController::class, 'saveSubPicture'])->name('sub-album.images.save');
+        Route::post('/save-sub-sub-images/{sub_sub_album}',         [ImageController::class, 'saveSubSubPicture'])->name('sub-sub-album.images.save');
+
+
+        Route::get('/album-pictures/{album_id}',                     [AdminGalleryController::class, 'albumPicturesPage'])->name('album.pictures');
 
 
         Route::get('/all-sub-albums/{album_id}',                    [AdminGalleryController::class, 'allSubAlbumsPage'])->name('sub-albums.all');

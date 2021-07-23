@@ -28,7 +28,7 @@ class AddPictureToAlbum extends Component
     public function updated($field)
     {
         $this->validateOnly($field, [
-           'images'   => 'required|array',
+//           'images.*'  => 'required|image|max:20480',
            'caption' => 'nullable|max:255',
         ]);
     }
@@ -37,7 +37,7 @@ class AddPictureToAlbum extends Component
     {
 //        'images'   => 'required|file|image|mimes:jpeg,png,jpg,gif,svg|max:20480',
         $this->validate([
-            'images'   => 'required|array',
+//            'images'   => 'required|image|max:20480',
             'caption' =>  'nullable|max:255',
         ]);
 
@@ -45,7 +45,6 @@ class AddPictureToAlbum extends Component
             $original_image     = $this->storeFile($pic);
             // create a compressed version of the image
             $compressed_version = $this->compressAndStoreFile($pic, 2);
-
 
             Picture::create([
                 'album_id'        => $this->album_id,
@@ -56,7 +55,7 @@ class AddPictureToAlbum extends Component
         }
 
         $this->clear();
-        return $this->emit('alert', ['type' => 'success', 'message' => 'Picture Added to album!']);
+        return $this->emit( 'alert', ['type' => 'success', 'message' => 'Picture Added to album!']);
     }
 
     public function clear()

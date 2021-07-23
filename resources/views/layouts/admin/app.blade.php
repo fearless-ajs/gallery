@@ -430,8 +430,6 @@
         maxFilesNum: 400,
         theme: 'fas',
         uploadUrl: '#'
-    }).on('filepreupload', function(event, data, previewId, index) {
-        alert('The description entered is:\n\n' + ($('#description').val() || ' NULL'));
     });
     $("#file-1").fileinput({
         theme: 'fas',
