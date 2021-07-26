@@ -46,7 +46,7 @@
                         Photo Preview:<br>
                         @foreach($images as $photo)
                            <a href="{{ $photo->temporaryUrl() }}" data-toggle="lightbox" data-title="{{$caption}}" data-gallery="gallery">
-                                 <img src="{{ $photo->temporaryUrl() }}" width="200" style="margin-bottom: 5px;">
+                                 <img src="{{ $photo->temporaryUrl() }}" width="200" style="margin-bottom: 5px; border: 2px solid white;">
                             <span wire:loading wire:target="removeImg({{$loop->index}})" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                             </a>
                             <small style="cursor: pointer;" class="fas fa-times text-danger" wire:click.prevent="removeImg({{$loop->index}})" wire:loading.remove wire:target="removeImg({{$loop->index}})"></small>

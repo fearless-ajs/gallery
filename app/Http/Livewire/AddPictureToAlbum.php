@@ -36,9 +36,12 @@ class AddPictureToAlbum extends Component
     public function save()
     {
 //        'images'   => 'required|file|image|mimes:jpeg,png,jpg,gif,svg|max:20480',
+        if (empty($this->images)){
+            return $this->emit( 'alert', ['type' => 'error', 'message' => 'Please select at least one image!']);
+        }
         $this->validate([
             'images.*'  => 'required|file|image|mimes:jpeg,png,jpg,gif,svg|max:20480',
-            'caption' =>  'nullable|max:255',
+            'caption' =>   'nullable|max:255',
         ]);
 
         foreach ($this->images as $pic){
@@ -61,7 +64,7 @@ class AddPictureToAlbum extends Component
     public function clear()
     {
         $this->caption = '';
-//        $this->image   = '';
+        $this->images   = '';
     }
 
     public function removeImg($index)

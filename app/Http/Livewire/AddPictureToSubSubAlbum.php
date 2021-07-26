@@ -28,15 +28,19 @@ class AddPictureToSubSubAlbum extends Component
     public function updated($field)
     {
         $this->validateOnly($field, [
-            'images'   => 'required|array',
+            'images.*'  => 'required|file|image|mimes:jpeg,png,jpg,gif,svg|max:20480',
             'caption' => 'nullable|max:255',
         ]);
     }
 
     public function save()
     {
+        if (empty($this->images)){
+            return $this->emit( 'alert', ['type' => 'error', 'message' => 'Please select at least one image!']);
+        }
+
         $this->validate([
-            'images'   => 'required|array',
+            'images.*'  => 'required|file|image|mimes:jpeg,png,jpg,gif,svg|max:20480',
             'caption' => 'nullable|max:255',
         ]);
 
@@ -60,8 +64,14 @@ class AddPictureToSubSubAlbum extends Component
 
     public function clear()
     {
-        $this->caption = '';
-        $this->image   = '';
+        $this->caption  = '';
+        $this->images   = '';
+    }
+
+    public function removeImg($index)
+    {
+//        unset($this->images[$index]);
+        array_splice($this->images, $index, 1);
     }
 
     public function storeFile($file)

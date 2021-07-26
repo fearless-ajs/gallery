@@ -86,7 +86,7 @@ class EditSubAlbumPage extends Component
 
     public function storeFile($file)
     {
-        $img = ImageManagerStatic::make($file)->encode('jpg', 2);
+        $img = ImageManagerStatic::make($file)->encode('jpg');
         $original_filename = $file->getClientOriginalName();
         $name = time() .Str::random(50).'_'.$original_filename;
         Storage::disk('public')->put($name, $img);
