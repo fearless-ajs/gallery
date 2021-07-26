@@ -28,7 +28,7 @@ class AddPictureToAlbum extends Component
     public function updated($field)
     {
         $this->validateOnly($field, [
-//           'images.*'  => 'required|image|max:20480',
+           'images.*'  => 'required|file|image|mimes:jpeg,png,jpg,gif,svg|max:20480',
            'caption' => 'nullable|max:255',
         ]);
     }
@@ -37,7 +37,7 @@ class AddPictureToAlbum extends Component
     {
 //        'images'   => 'required|file|image|mimes:jpeg,png,jpg,gif,svg|max:20480',
         $this->validate([
-//            'images'   => 'required|image|max:20480',
+            'images.*'  => 'required|file|image|mimes:jpeg,png,jpg,gif,svg|max:20480',
             'caption' =>  'nullable|max:255',
         ]);
 
@@ -62,6 +62,12 @@ class AddPictureToAlbum extends Component
     {
         $this->caption = '';
 //        $this->image   = '';
+    }
+
+    public function removeImg($index)
+    {
+//        unset($this->images[$index]);
+        array_splice($this->images, $index, 1);
     }
 
     public function storeFile($file)
