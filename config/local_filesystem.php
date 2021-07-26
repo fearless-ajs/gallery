@@ -37,22 +37,15 @@ return [
 
         'public' => [
             'driver' => 'local',
-            'root' => storage_path('../public/uploads'),
-            'url' => env('APP_URL').'/uploads', //view path
+            'root' => storage_path('app/public'),
+            'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
 
-//        'public' => [
-//            'driver' => 'local',
-//            'root' => storage_path('app/public'),
-//            'url' => env('APP_URL').'/storage',
-//            'visibility' => 'public',
-//        ],
-
         'thumbnail' => [
             'driver' => 'local',
-            'root' => storage_path('../public/uploads/thumbnail'),
-            'url' => env('APP_URL').'/uploads/thumbnail',
+            'root' => storage_path('app/public/thumbnail'),
+            'url' => env('APP_URL').'/storage/thumbnail',
             'visibility' => 'public',
         ],
 
